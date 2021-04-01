@@ -2,13 +2,15 @@ package Application;
 
 import boardGame.Board;
 import boardGame.Position;
+import chess.ChessMatch;
 
 import java.awt.*;
 
 public class Program {
     public static void main(String[] args) {
 
-        Board tabuleiro = new Board(8, 8);
+        ChessMatch partida = new ChessMatch();
+        UI.printBoard(partida.getPieces());
 
     }
 }
