@@ -18,7 +18,7 @@ public class UI {
         else{
             System.out.println(piece);
         }
-        System.out.println(" ");
+        System.out.println("");
 
 
         }
