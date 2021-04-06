@@ -3,8 +3,6 @@ package chess;
 import boardGame.Board;
 import boardGame.Piece;
 
-import java.awt.*;
-
 public class ChessPiece extends Piece {
 
     private Color color;

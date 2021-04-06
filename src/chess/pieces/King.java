@@ -1,11 +1,12 @@
 package chess.pieces;
 
+
 import boardGame.Board;
 import chess.ChessPiece;
-
-import java.awt.*;
+import chess.Color;
 
 public class King extends ChessPiece {
+
 
     public King(Board board, Color color) {
         super(board, color);
@@ -13,6 +14,7 @@ public class King extends ChessPiece {
 
     @Override
     public String toString() {
-        return "K";
+        return "K" ;
     }
 }
+
