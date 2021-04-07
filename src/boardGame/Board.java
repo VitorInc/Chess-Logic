@@ -11,7 +11,7 @@ public class Board {
 
     public Board(int rows, int columns) {
 
-        if(rows <1 || columns < 1){
+        if(rows < 1 || columns < 1){
             throw new BoardException("Ta errado, you can't create this board w/o collumns or rows ...");
         }
 
@@ -34,7 +34,7 @@ public class Board {
         if(!positionExists(row, column)){
             throw new BoardException("Position not on the board");
         }
-        return pieces[rows][columns];
+        return pieces[row][column];
     }
 
     public Piece piece (Position position){
@@ -54,7 +54,7 @@ public class Board {
 
     private boolean positionExists(int row,int column){
 
-        return row >=0 && row < rows || column >=0 && column < columns;
+        return row >=0 && row < rows && column >=0 && column < columns;
     }
 
     public boolean positionExists(Position position){
