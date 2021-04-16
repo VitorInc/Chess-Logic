@@ -101,7 +101,7 @@ public class ChessMatch {
             capturedPieces.add(capturedPiece);
         }
 
-        board.placePiece(p,target);
+
         return capturedPiece;
     }
     private void unDoMove(Position source, Position target,Piece capturedPiece){
@@ -113,6 +113,18 @@ public class ChessMatch {
             board.placePiece(capturedPiece, target);
             capturedPieces.remove(capturedPieces);
             piecesOnTheBoard.add(capturedPiece);
+        }
+    }
+
+    private void validateSourcePosition(Position position){
+        if(!board.thereIsAPiece(position)){
+            throw new ChessException("There is no piece on ource position");
+        }
+        if(currentPlayer != ((ChessPiece)board.piece(position)).getColor()){
+            throw new ChessException("Ur only allowed to play with your pieces");
+        }
+        if(!board.piece(position).isThereAnyPossibleMove()) {
+            throw new ChessException("There is no possible moves to this piece");
         }
     }
 
@@ -179,17 +191,7 @@ public class ChessMatch {
        }
 return  true;
         }
-    private void validateSourcePosition(Position position){
-    if(!board.thereIsAPiece(position)){
-        throw new ChessException("There is no piece on ource position");
-        }
-    if(currentPlayer != ((ChessPiece)board.piece(position)).getColor()){
-        throw new ChessException("Ur only allowed to play with your pieces");
-    }
-    if(!board.piece(position).isThereAnyPossibleMove()) {
-        throw new ChessException("There is no possible moves to this piece");
-    }
-}
+
 
      private void initialSetup() {
          placeNewPiece('a', 2, new Pawn(board, Color.WHITE));
@@ -200,7 +202,8 @@ return  true;
          placeNewPiece('f', 2, new Pawn(board, Color.WHITE));
          placeNewPiece('g', 2, new Pawn(board, Color.WHITE));
          placeNewPiece('h', 2, new Pawn(board, Color.WHITE));
-
+         placeNewPiece('f', 1, new Bishop(board, Color.WHITE));
+         placeNewPiece('c', 1, new Bishop(board, Color.WHITE));
          placeNewPiece('e', 1, new King(board, Color.WHITE));
 
 
@@ -212,6 +215,8 @@ return  true;
          placeNewPiece('f', 7, new Pawn(board, Color.BLACK));
          placeNewPiece('g', 7, new Pawn(board, Color.BLACK));
          placeNewPiece('h', 7, new Pawn(board, Color.BLACK));
+         placeNewPiece('f', 8, new Bishop(board, Color.BLACK));
+         placeNewPiece('c', 8, new Bishop(board, Color.BLACK));
          placeNewPiece('e', 8, new King(board, Color.BLACK));
     }
 }
